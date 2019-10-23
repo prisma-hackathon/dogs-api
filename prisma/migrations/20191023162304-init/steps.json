@@ -1,0 +1,237 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "stepType": "CreateModel",
+      "name": "Dog",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Attribute",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "AttributeTemplate",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Dog",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Dog",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Dog",
+      "name": "attributes",
+      "type": {
+        "Relation": {
+          "to": "Attribute",
+          "to_fields": [],
+          "name": "AttributeToDog",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Dog",
+      "name": "score",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "attributeTemplate",
+      "type": {
+        "Relation": {
+          "to": "AttributeTemplate",
+          "to_fields": [
+            "id"
+          ],
+          "name": "AttributeToAttributeTemplate",
+          "on_delete": "None"
+        }
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "value",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "dog",
+      "type": {
+        "Relation": {
+          "to": "Dog",
+          "to_fields": [
+            "id"
+          ],
+          "name": "AttributeToDog",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "AttributeTemplate",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "AttributeTemplate",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "AttributeTemplate",
+      "name": "description",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "AttributeTemplate",
+      "name": "choices",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "AttributeTemplate",
+      "name": "attributes",
+      "type": {
+        "Relation": {
+          "to": "Attribute",
+          "to_fields": [],
+          "name": "AttributeToAttributeTemplate",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateIndex",
+      "model": "Dog",
+      "name": null,
+      "tpe": "Unique",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "Dog",
+      "name": "name",
+      "isUnique": true
+    },
+    {
+      "stepType": "DeleteIndex",
+      "model": "Dog",
+      "name": null,
+      "tpe": "Unique",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "AttributeTemplate",
+      "name": "name",
+      "isUnique": true
+    }
+  ]
+}
